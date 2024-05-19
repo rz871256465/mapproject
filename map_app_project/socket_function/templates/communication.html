@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat Page</title>
+    {% comment %} bootstrap {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'socket_function/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container-fluid d-flex flex-row all">
+      <div class="sideBar">
+        <h5 class="me-auto ms-auto mb-0 mt-1 fs-4">Active Users (Participants)</h5>
+      </div>
+      <div class="container">
+        <div class="message chatContainer" id="message"></div>
+        <div>
+          <input type="text"
+                 class="form-control border border-primary-subtle me-2"
+                 placeholder="please input"
+                 name=""
+                 id="txt" />
+          <input type="button"
+                 class="btn btn-primary pe-3 ps-3 pb-1.5"
+                 value="send"
+                 onclick="sendMessage()" />
+        </div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+      function sendMessage() {
+        var text = $("#txt").val();
+
+        //basic on Ajax
+        $.ajax({
+          url: "/send/msg/",
+          type: "GET",
+          data: {
+            text: text,
+          },
+          success: function (res) {
+            console.log("请求发送成功", res);
+          },
+        });
+      }
+
+      max_index = 0;
+      //每隔两秒钟，向后台发送请求获取数据并展示在界面上
+      setInterval(function () {
+        $.ajax({
+          url: "/get/msg/",
+          type: "GET",
+          data: {
+            index: max_index,
+          },
+          success: function (dataDict) {
+            //console.log("获取数据",res);
+            //var dataDict = JSON.parse(res);
+
+            max_index = dataDict.max_index;
+            $.each(dataDict.data, function (index, item) {
+              console.log(index, item);
+              //创建div标签
+              var tag = $("<div>");
+              tag.text(item); //创建了div
+
+              $("#message").append(tag);
+            });
+          },
+        });
+      }, 2000);
+    </script>
+  </body>
+</html>

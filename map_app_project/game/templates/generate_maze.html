@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mazeCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('mazeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const cellSize = 10;//每个单元格的大小
+        const rows = canvas.height / cellSize;//计算行数
+        const cols = canvas.width / cellSize;//计算列数
+
+        let maze = [];
+        for (let i = 0; i < rows; i++) {
+            maze[i] = [];
+            for (let j = 0; j < cols; j++) {
+                maze[i][j] = Math.random() < 0.4 ? 1 : 0;
+            }
+        }
+
+        let redCell = { x: 0, y: 0 };
+        let score = 0;
+        let items = [];
+
+
+        const entranceX = 2;
+        const entranceY = 2;
+        const exitX = cols - 3;
+        const exitY = rows - 3;
+
+        maze[entranceY][entranceX] = 0;
+        maze[exitY][exitX] = 0;
+
+        function generateItem() {
+            let itemX, itemY;
+            do {
+                itemX = Math.floor(Math.random() * cols);
+                itemY = Math.floor(Math.random() * rows);
+            } while (maze[itemY][itemX] || itemX === entranceX && itemY === entranceY || itemX === exitX && itemY === exitY);
+            maze[itemY][itemX] = 2;
+            items.push({ x: itemX, y: itemY, name: 'item' });
+        }
+
+        generateItem();
+
+        function drawMaze() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    console.log("maze[i][j]", maze[i][j]);
+                    if (maze[i][j]) {
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    }
+                }
+            }
+
+            ctx.fillStyle = 'red';
+            ctx.fillRect(redCell.x * cellSize, redCell.y * cellSize, cellSize, cellSize);
+
+            ctx.fillStyle = 'blue';
+            items.forEach(item => {
+                ctx.fillRect(item.x * cellSize, item.y * cellSize, cellSize, cellSize);
+            });
+
+            ctx.fillStyle = 'green';
+            // ctx.fillRect(entranceX * cellSize, entranceY * cellSize, cellSize, cellSize);
+            ctx.fillRect(exitX * cellSize, exitY * cellSize, cellSize, cellSize);
+
+            // ctx.fillStyle = 'white';
+            // ctx.font = '16px Arial';
+            // ctx.fillText(`Score: ${score}`, 10, 20);
+        }
+
+        function checkWinCondition() {
+            return redCell.x === exitX && redCell.y === exitY;
+        }
+
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowUp':
+                    moveRedCell(0, -1);
+                    break;
+                case 'ArrowDown':
+                    moveRedCell(0, 1);
+                    break;
+                case 'ArrowLeft':
+                    moveRedCell(-1, 0);
+                    break;
+                case 'ArrowRight':
+                    moveRedCell(1, 0);
+                    break;
+            }
+        });
+        function moveRedCell(dx, dy) {
+            const newX = redCell.x + dx;
+            const newY = redCell.y + dy;
+            console.log(newX, newY);
+            if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && !maze[newY][newX]) {
+                redCell.x = newX;
+                redCell.y = newY;
+                if (items.some(item => item.x === newX && item.y === newY)) {
+                    items = items.filter(item => item.x !== newX || item.y !== newY);
+                    score++;
+                    generateItem();
+                }
+                drawMaze();
+            }
+            if (newX == 17 && newY == 17) {
+                alert("闯关成功")
+            }
+
+        }
+        drawMaze();
+    </script>
+</body>
+
+</html>

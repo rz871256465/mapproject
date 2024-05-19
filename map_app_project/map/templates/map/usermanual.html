@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 文章页面</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+   
+<link href="{% static 'css/bootstrap.min.css' %}?v=3.3.6" rel="stylesheet">
+<link href="{% static 'css/font-awesome.css' %}?v=4.4.0" rel="stylesheet">
+
+<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}?v=4.1.0" rel="stylesheet">
+<style>
+    img {
+        width: 600px;
+        height: auto;
+    }
+</style>
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="ibox">
+                    <div class="ibox-content">
+                      
+                        <div class="text-center article-title">
+                            <h1 class="article-title">
+                                User Manual: Map Tasks Application
+                                </h1>
+                        </div>
+                        <h2>Welcome to the Map Quest app!</h2>
+                        <p>
+                            This user manual provides guidance on how to effectively navigate and use the Map Tasks application. Our platform enables researchers to conduct controlled experiments that assess problem-solving and communication skills among participants. Below, you will find instructions tailored for participants and researchers.
+                        </p>
+                        <h2>
+                            For Participants:
+                        </h2>
+                        <h3>
+                            Getting Started:
+                        </h3>
+                        <p>
+                            URL: https://map-interaction-platform-164b99c52895.herokuapp.com/
+                        </p>
+                        <h3>
+                            Logging In:
+                        </h3>
+                        <p>
+                            Navigate to the application login page.
+                            Enter your username and password provided by your administrator.
+                            Click "Log In" to access.
+                        </p>
+                        <img src="{% static 'image/1.png' %}" alt="Example Image">
+                        
+                        <p>
+                            If you don't have an account, you'll need to register
+                        </p>
+                        <img src="{% static 'image/2.png' %}" alt="Example Image">
+                        <p>
+                            And then you will come to Registration Page
+                        </p>
+                        <img src="{% static 'image/3.png' %}" alt="Example Image">
+                        <h2>
+                            Performing Tasks:
+                        </h2>
+                        <h3>
+                            Roles:
+                        </h3>
+                        <img src="{% static 'image/4.png' %}" alt="Example Image">
+                        <p>
+                            Instruction Givers will see the complete map with routes and need to guide their partner.
+                            Followers will rely on instructions from their partner to navigate their map, which has limited visibility.
+                        </p>
+                        <h2>
+                            Giver views:
+                        </h2>
+                        <img src="{% static 'image/5.png' %}" alt="Example Image">
+                        <p>
+                            Follower views:
+                        </p>
+                        <img src="{% static 'image/6.png' %}" alt="Example Image">
+                        <h2>
+                            Using the Chat Panel:
+                        </h2>
+                        <p>
+                            Communicate with your partner using the chat panel.
+                            Ensure clarity and precision in your instructions or queries.
+                        </p>
+                        <img src="{% static 'image/7.png' %}" alt="Example Image">
+                        <p></p>
+                        <img src="{% static 'image/8.png' %}" alt="Example Image">
+                        <h2>
+                            Completing the Task:
+                        </h2>
+                        <p>
+                            Follow the instructions to complete the navigation challenge.
+                        </p>
+                        <p>
+                            Givers: Guide your partner accurately.
+                        </p>
+                        <p>
+                            Followers: Indicate your progress and any confusion promptly.
+                        </p>
+                        <img src="{% static 'image/9.png' %}" alt="Example Image">
+                        <p></p>
+                        <img src="{% static 'image/10.png' %}" alt="Example Image">
+                        <h2>
+                            Logging Out:
+                        </h2>
+                        <img src="{% static 'image/11.png' %}" alt="Example Image">
+                        <p>
+                            Click "Logout" at the top-right corner when you have completed your tasks.  
+                        </p>
+                        <h2>
+                            For Researchers/Administrators:
+                        </h2>
+                        <p>Administrator Dashboard:</p>
+                        <h3>Username: Admin</h3>
+                        <h3>Email: Admin@test.com</h3>    
+                         <h3>   Password: admin123</h3>
+                         <h3>URL：https://map-interaction-platform-164b99c52895.herokuapp.com/admin/</h3>
+                         <h2>Accessing the Dashboard:</h2>
+                        <p>
+                            The dashboard provides an overview of all ongoing experiments and participant activities.
+
+                        </p>
+                        <img src="{% static 'image/12.png' %}" alt="Example Image">
+                        <p></p>
+                        <img src="{% static 'image/13.png' %}" alt="Example Image">
+                        <p></p>
+
+                        <h2>Data Collection and Analysis:</h2>
+                        <p>Access collected data through the 'Data' tab.
+                            Download data reports in various formats for further analysis.</p>
+                        <img src="{% static 'image/14.png' %}" alt="Example Image">
+                        <h2>Support and Feedback:</h2>
+                        <p>
+                            For assistance or to provide feedback, navigate to the 'Help and Support' section.
+                        </p>
+                        <h3>General Tips:</h3>
+
+                        <p>
+                           Ensure a stable internet connection for optimal performance.
+                        </p>
+                        <h2>Troubleshooting:</h2>
+                        <h3>Clear browser cache</h3>
+                       
+                        <p>
+                            If you encounter any issues, refer to the FAQ section or contact support directly through the provided contact details.
+                            This manual is intended to guide you through using the Map Task Application. For more detailed inquiries or technical support, please reach out through the contact methods listed 
+                        </p>
+                        <div class="widget lazur-bg p-xl">
+
+                            <h2>
+                                Technical support staff email:
+                                        </h2>
+                            <ul class="list-unstyled m-t-md">
+                                <li>
+                                    <span class="fa fa-envelope m-r-xs"></span>
+                                   
+                                    t.miebaka-ogan.22@abdn.ac.uk
+                                </li>
+                                <li>
+                                    <span class="fa fa-home m-r-xs"></span>
+                                   
+                                    r.zhu.22@abdn.ac.uk
+                                </li>
+                                <li>
+                                    <span class="fa fa-phone m-r-xs"></span>
+                                   
+                                    y.liu8.22@abdn.ac.uk
+                                </li>
+                            </ul>
+        
+                        </div>
+                        
+                        <hr>
+
+                       
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <!-- 自定义js -->
+    <script src="js/content.js?v=1.0.0"></script>
+
+
+    
+    
+
+</body>
+
+</html>

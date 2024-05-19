@@ -1,0 +1,119 @@
+/* Sorted by Alphabetic Order */
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #b4dff7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto-Bold";
+}
+
+h5 {
+  font-size: 1.28rem;
+}
+
+.all {
+  height: 100vh;
+  padding: 0;
+}
+.canvas {
+  border: 1px solid black;
+}
+.broadcast {
+  background-color: rgb(224, 226, 226);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  border-radius: 3rem;
+  padding: 0.25rem 1rem 0.5rem;
+  font-size: 1rem;
+  width: fit-content;
+  margin-bottom: 0.7rem;
+  word-wrap: break-word;
+  max-width: 51%;
+}
+
+.centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.chat {
+  color: black;
+  border-radius: 3rem;
+  padding: 0.4rem 0.9rem 1.1rem 0.95rem;
+  font-size: 1.36rem;
+  width: fit-content;
+  margin-bottom: 0.7rem;
+  word-wrap: break-word;
+  max-width: 51%;
+  min-width: 13.5%;
+  position: relative;
+}
+
+.chatContainer {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.magic {
+  position: absolute;
+  right: 1.42rem;
+  bottom: 0.7rem;
+  /* margin-left: auto !important;
+  margin-right: 0 !important;
+  text-align: right !important; */
+}
+
+.message {
+  /* height: 500px; */
+  border: 1px solid #807e7e;
+  background-color: white;
+  /* background-color: rgb(3, 67, 77); */
+  /* width: 100%; */
+}
+
+.receive {
+  background-color: rgb(35, 165, 230);
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.send {
+  background-color: rgb(17, 192, 146);
+  text-align: left;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.sideBar {
+  /* width: 15.5rem; */
+  color: white;
+  background-color: rgb(43, 39, 39);
+  align-items: center;
+  /* position: fixed;
+  height: 100vh;  */
+}
+
+.vcentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+canvas {
+  border: 0.15rem solid black;
+}

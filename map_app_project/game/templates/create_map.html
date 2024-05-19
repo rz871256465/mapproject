@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 其他的 meta/link 标签 -->
+    <style>
+        .grid-cell {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #000;
+        cursor: pointer;
+      }
+      /* 用于标记被点击的方格 */
+      .grid-cell.active {
+        background-color: black;
+      }
+      .red { background-color: red; }
+
+    
+      .green { background-color: green; }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const gridCells = document.querySelectorAll('.grid-cell');
+    // 初始化二维数组为全0（路径）
+    let mazeArray = Array.from({ length: 20 }, () => Array(20).fill(0));
+    // 设置固定方格的颜色
+   
+    // 设置特定单元格的颜色
+    const setSpecialCellsColor = () => {
+            gridCells.forEach(cell => {
+                const row = parseInt(cell.dataset.row, 10);
+                const col = parseInt(cell.dataset.col, 10);
+                
+                // 检查特定索引并添加相应的类
+                if ((row === 0 && col === 0) ) {
+                    cell.classList.add('red'); // 设置红色
+                } else if (row === 17 && col === 17) {
+                    cell.classList.add('green'); // 设置绿色
+                }
+            });
+        };
+
+        // 调用设置特定单元格颜色的函数
+        setSpecialCellsColor();
+
+    gridCells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            const row = parseInt(this.dataset.row, 10);
+            const col = parseInt(this.dataset.col, 10);
+
+            // 检查特定索引的单元格，如果是特定的点，则不执行状态切换
+            if ((row === 0 && col === 0) || (row === 17 && col === 17)) {
+                    return;
+                }
+
+
+            // 切换状态：路径(0)和墙(1)
+            mazeArray[row][col] = mazeArray[row][col] === 1 ? 0 : 1;
+            this.classList.toggle('active');
+            // 序列化迷宫数组
+            document.getElementById('mapData').value = JSON.stringify(mazeArray);
+        });
+    });
+});
+        </script>
+</head>
+<body>
+{% block content %}
+<h2>Create a new map</h2>
+<form method="post" id="mapForm">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Map Name" required><br>
+    <!-- 迷宫方格表格 -->
+    <table id="mazeGrid">
+        {% for row in range_20 %}
+    <tr>
+        {% for col in range_20 %}
+        <td class="grid-cell" data-row="{{ row }}" data-col="{{ col }}"></td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+    </table>
+    <!-- 存储迷宫数据的隐藏字段 -->
+    <input type="hidden" name="maze" id="mapData">
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
+  </body>
+  </html>

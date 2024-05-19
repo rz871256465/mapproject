@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Option</title>
+</head>
+<body>
+    <h1>Download SQL Data as Excel</h1>
+    <p>Click the button below to download the SQL data in Excel format.</p>
+    <a href="{% url 'download_excel' %}" download>
+        <button>Download user</button>
+    </a>
+    <a href="{% url 'download_excel_another' %}" download>
+        <button>Download chat</button>
+    </a>
+    <a href="{% url 'download_excel_map' %}" download>
+        <button>Download map</button>
+    </a>
+</body>
+</html>
+
+

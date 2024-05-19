@@ -1,0 +1,46 @@
+/* Sorted by Alphabetic Order */
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #9a616d;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto-Bold";
+}
+
+h5 {
+  font-size: 1.28rem;
+}
+
+.all {
+  height: 100vh;
+  padding: 0;
+}
+
+.chatContainer {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.message {
+  /* height: 500px; */
+  border: 1px solid #dddddd;
+  /* width: 100%; */
+}
+
+.sideBar {
+  width: 19rem;
+  color: white;
+  background-color: rgb(43, 39, 39);
+  align-items: center;
+}
